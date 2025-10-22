@@ -11,9 +11,16 @@ func assertEqual(t testing.TB, got,want string){
 }
 func TestHello(t *testing.T) {
 	t.Run("saying hello to people", func(t *testing.T) {
-		assertEqual(t,Hello("Dhwanil"),"Hello Dhwanil");
+		assertEqual(t,Hello("Dhwanil",ENGLISH),"Hello Dhwanil");
 	})
 	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
-		assertEqual(t,Hello(""),"Hello World")
+		assertEqual(t,Hello("",ENGLISH),"Hello World")
+	})
+
+	t.Run("Testing language support with Gujarati",func(t *testing.T){
+		assertEqual(t,Hello("Dhwanil",GUJARATI),"નમસ્તે Dhwanil");
+	})
+	t.Run("Testing if english is default language in case of invalid language provided",func(t *testing.T) {
+		assertEqual(t,Hello("Dhwanil","zh"),"Hello Dhwanil")
 	})
 }
