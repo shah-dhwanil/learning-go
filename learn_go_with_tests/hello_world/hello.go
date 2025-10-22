@@ -29,6 +29,14 @@ const (
 )
 
 func Hello(name string,lang language)string{
+	prefix:= getPrefix(lang)
+	if name == "" || name == " "{
+		name = "World"
+	}
+	return prefix+" "+name
+}
+
+func getPrefix(lang language)string{
 	var prefix string
 	switch lang{
 		case ENGLISH:
@@ -50,10 +58,7 @@ func Hello(name string,lang language)string{
 		default:
 			prefix = englishPrefix
 	}
-	if name == "" || name == " "{
-		name = "World"
-	}
-	return prefix+" "+name
+	return  prefix
 }
 
 func main(){
